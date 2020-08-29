@@ -16,56 +16,64 @@ class _LoginViewState extends State<LoginView> {
           children: [
             Text('LOGIN', style: TextStyle(fontSize: 30, color: Colors.white)),
             SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Email*',
-                  filled: true,
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(color: Color(0xFF6E3B3B))),
-                  errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(color: Colors.red)),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(
-                          color: Color(0xFF6E3B3B).withOpacity(0.3))),
-                  fillColor: Colors.white),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.0),
+              child: TextField(
+                decoration: InputDecoration(
+                    hintText: 'Email*',
+                    filled: true,
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: BorderSide(color: Color(0xFF6E3B3B))),
+                    errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: BorderSide(color: Colors.red)),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: BorderSide(
+                            color: Color(0xFF6E3B3B).withOpacity(0.3))),
+                    fillColor: Colors.white),
+              ),
             ),
             SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Password*',
-                  filled: true,
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(color: Color(0xFF6E3B3B))),
-                  errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(color: Colors.red)),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(
-                          color: Color(0xFF6E3B3B).withOpacity(0.3))),
-                  fillColor: Colors.white),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.0),
+              child: TextField(
+                decoration: InputDecoration(
+                    hintText: 'Password*',
+                    filled: true,
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: BorderSide(color: Color(0xFF6E3B3B))),
+                    errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: BorderSide(color: Colors.red)),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: BorderSide(
+                            color: Color(0xFF6E3B3B).withOpacity(0.3))),
+                    fillColor: Colors.white),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Align(
-                alignment: Alignment.centerRight,
-                child: Text('Forgot your password?', style: TextStyle(color: Colors.white))
-              ),
+                  alignment: Alignment.centerRight,
+                  child: Text('Forgot your password?',
+                      style: TextStyle(color: Colors.white))),
             ),
             SizedBox(
               width: 300,
               height: 50,
               child: OutlineButton(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)
-                ),
+                    borderRadius: BorderRadius.circular(20)),
                 borderSide: BorderSide(color: Colors.white, width: 2),
-                onPressed: (){},
-                child: Text('Sign In', style: TextStyle(color: Colors.white),),
+                onPressed: () {},
+                child: Text(
+                  'Sign In',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             Padding(
