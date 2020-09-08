@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatefulWidget {
@@ -14,8 +15,15 @@ class _LoginViewState extends State<LoginView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+              height: 100,
+              width: 100,
+              child: Image(
+                image: AssetImage('assets/images/lacus.png'),
+              ),
+            ),
             Text('LOGIN', style: TextStyle(fontSize: 30, color: Colors.white)),
-            SizedBox(height: 20),
+            SizedBox(height: 50),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.0),
               child: TextField(
@@ -35,7 +43,7 @@ class _LoginViewState extends State<LoginView> {
                     fillColor: Colors.white),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.0),
               child: TextField(
@@ -55,6 +63,7 @@ class _LoginViewState extends State<LoginView> {
                     fillColor: Colors.white),
               ),
             ),
+            SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Align(
@@ -80,7 +89,28 @@ class _LoginViewState extends State<LoginView> {
               padding: const EdgeInsets.all(16.0),
               child: Text('-OR-', style: TextStyle(color: Colors.white)),
             ),
-            Text('Sign in with', style: TextStyle(color: Colors.white))
+            Text(
+              'Sign in with',
+              style: TextStyle(color: Colors.white),
+            ),
+            SizedBox(height: 10),
+            ClipOval(
+              child: Container(
+                height: 60,
+                width: 60,
+                color: Colors.white,
+                child: Center(
+                  child: Text(
+                    'f',
+                    style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.w900,
+                      color: Color(0xFF2A4D73),
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
