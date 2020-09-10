@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lacus/ui/views/signin/signin.dart';
+import 'package:lacus/ui/views/signup/signup.dart';
 
 import 'package:lacus/ui/views/splashscreen/background.dart';
+import 'package:lacus/widget/button/roundedButton.dart';
 import 'package:lacus/widget/colors/color.dart';
 
 class Body extends StatelessWidget {
@@ -25,47 +27,27 @@ class Body extends StatelessWidget {
             SizedBox(
               height: size.height * 0.03,
             ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 15.0),
-              width: size.width * 0.7,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: FlatButton(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginView()),
-                    );
-                  },
-                  color: indigo,
-                  child: Text(
-                    'LOGIN',
-                    style: TextStyle(
-                      color: white,
-                    ),
-                  ),
-                ),
-              ),
+            RoundedButton(
+              textColor: white,
+              color: indigo,
+              text: 'LOGIN',
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginView()),
+                );
+              },
             ),
-            Container(
-              width: size.width * 0.7,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: FlatButton(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
-                  onPressed: () {},
-                  color: lightIndigo,
-                  child: Text(
-                    'SIGNUP',
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
+            RoundedButton(
+              textColor: Colors.black,
+              color: lightIndigo,
+              text: 'SIGNUP',
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegisterView()),
+                );
+              },
             ),
           ],
         ),
