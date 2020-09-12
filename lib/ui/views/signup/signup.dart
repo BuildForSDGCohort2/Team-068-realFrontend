@@ -1,186 +1,223 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lacus/widget/button/roundedButton.dart';
+import 'package:lacus/widget/colors/color.dart';
 
-class RegisterView extends StatefulWidget {
-  @override
-  _RegisterViewState createState() => _RegisterViewState();
-}
-
-class _RegisterViewState extends State<RegisterView> {
+class Description extends StatelessWidget {
+  final Function toggle;
+  Description(this.toggle);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                //TODO: logo
-                SizedBox(height: 70),
-                Text('REGISTER',
-                    style: TextStyle(fontSize: 30, color: Colors.white)),
-                SizedBox(height: 20),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                            hintText: 'Password*',
-                            filled: true,
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide:
-                                    BorderSide(color: Color(0xFF6E3B3B))),
-                            errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(color: Colors.red)),
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(
-                                    color: Color(0xFF6E3B3B).withOpacity(0.3))),
-                            fillColor: Colors.white),
-                      ),
-                    ),
-                    SizedBox(width: 7),
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                            hintText: 'Password*',
-                            filled: true,
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide:
-                                    BorderSide(color: Color(0xFF6E3B3B))),
-                            errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(color: Colors.red)),
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(
-                                    color: Color(0xFF6E3B3B).withOpacity(0.3))),
-                            fillColor: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 6),
-                TextField(
-                  decoration: InputDecoration(
-                      hintText: 'Email address',
-                      filled: true,
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Color(0xFF6E3B3B))),
-                      errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Colors.red)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(
-                              color: Color(0xFF6E3B3B).withOpacity(0.3))),
-                      fillColor: Colors.white),
-                ),
-                SizedBox(height: 6),
-                TextField(
-                  decoration: InputDecoration(
-                      hintText: 'Choose Password',
-                      filled: true,
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Color(0xFF6E3B3B))),
-                      errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Colors.red)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(
-                              color: Color(0xFF6E3B3B).withOpacity(0.3))),
-                      fillColor: Colors.white),
-                ),
-                SizedBox(height: 6),
-                TextField(
-                  decoration: InputDecoration(
-                      hintText: 'Confirm Password',
-                      filled: true,
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Color(0xFF6E3B3B))),
-                      errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Colors.red)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(
-                              color: Color(0xFF6E3B3B).withOpacity(0.3))),
-                      fillColor: Colors.white),
-                ),
-                SizedBox(height: 6),
-                TextField(
-                  decoration: InputDecoration(
-                      hintText: 'Gender',
-                      filled: true,
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Color(0xFF6E3B3B))),
-                      errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Colors.red)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(
-                              color: Color(0xFF6E3B3B).withOpacity(0.3))),
-                      fillColor: Colors.white),
-                ),
-                SizedBox(height: 6),
-                TextField(
-                  decoration: InputDecoration(
-                      hintText: 'Phone Number',
-                      filled: true,
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Color(0xFF6E3B3B))),
-                      errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Colors.red)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(
-                              color: Color(0xFF6E3B3B).withOpacity(0.3))),
-                      fillColor: Colors.white),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                      'By proceeding you also agree to the Terms of Service and Privacy Policy',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
-                      )),
-                ),
-                SizedBox(
-                  width: 300,
-                  height: 50,
-                  child: OutlineButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    borderSide: BorderSide(color: Colors.white, width: 2),
-                    onPressed: () {},
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text('Already have an account? Sign In',
-                      style: TextStyle(color: Colors.white.withOpacity(0.6))),
-                ),
-              ],
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        children: <Widget>[
+          Text(
+            'REGISTER ACCOUNT',
+            style: TextStyle(fontWeight: FontWeight.w800),
+          ),
+          Text(
+            'Complete your details or continue \nwith social media',
+            textAlign: TextAlign.center,
+          ),
+          RegisterForm(),
+        ],
+      ),
+    );
+  }
+}
+
+class RegisterForm extends StatefulWidget {
+  @override
+  _RegisterFormState createState() => _RegisterFormState();
+}
+
+class _RegisterFormState extends State<RegisterForm> {
+  String email = '';
+  String password = '';
+  String confirmPassword = '';
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Form(
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              onSaved: (newVal) => email = newVal,
+              onChanged: (val) {},
+              validator: (val) {
+                return RegExp(
+                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                        .hasMatch(val)
+                    ? null
+                    : 'Please provide a valid email';
+              },
+              decoration: InputDecoration(
+                labelText: 'Email',
+                hintText: 'Enter your Email',
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                suffixIcon: Icon(Icons.mail),
+              ),
             ),
           ),
-        ),
+          SizedBox(height: size.height * 0.05),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: TextFormField(
+              obscureText: true,
+              onSaved: (newVal) => password = newVal,
+              onChanged: (val) {},
+              validator: (val) {
+                return val.length > 8
+                    ? null
+                    : ' Kindly ensure password is 8+ character';
+              },
+              decoration: InputDecoration(
+                labelText: 'Password',
+                hintText: 'Enter your Password',
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                suffixIcon: Icon(Icons.lock),
+              ),
+            ),
+          ),
+          SizedBox(height: size.height * 0.05),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: TextFormField(
+              obscureText: true,
+              onSaved: (newVal) => confirmPassword = newVal,
+              onChanged: (val) {},
+              validator: (val) {
+                return password == confirmPassword
+                    ? null
+                    : ' Password mismatch';
+              },
+              decoration: InputDecoration(
+                labelText: 'Confirm Password',
+                hintText: 'Re-enter your Password',
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                suffixIcon: Icon(Icons.lock),
+              ),
+            ),
+          ),
+          SizedBox(height: size.height * 0.05),
+          RoundedButton(
+            color: indigo,
+            textColor: white,
+            text: 'CONTINUE',
+            press: () {},
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Profile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        children: <Widget>[
+          Text(
+            'REGISTER ACCOUNT',
+            style: TextStyle(fontWeight: FontWeight.w800),
+          ),
+          Text(
+            'Complete your details or continue \nwith social media',
+            textAlign: TextAlign.center,
+          ),
+          RegisterForm(),
+        ],
+      ),
+    );
+  }
+}
+
+class ProfileForm extends StatefulWidget {
+  @override
+  _ProfileFormState createState() => _ProfileFormState();
+}
+
+class _ProfileFormState extends State<ProfileForm> {
+  String email = '';
+  String password = '';
+  String confirmPassword = '';
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Form(
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: TextFormField(
+              keyboardType: TextInputType.text,
+              onSaved: (newVal) => email = newVal,
+              onChanged: (val) {},
+              validator: (val) {
+                return val.length > 1 ? null : 'Please provide a valid email';
+              },
+              decoration: InputDecoration(
+                labelText: 'First Name',
+                hintText: 'Enter your first name',
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                suffixIcon: Icon(Icons.mail),
+              ),
+            ),
+          ),
+          SizedBox(height: size.height * 0.05),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: TextFormField(
+              obscureText: true,
+              onSaved: (newVal) => password = newVal,
+              onChanged: (val) {},
+              validator: (val) {
+                return val.length > 1
+                    ? null
+                    : ' Kindly ensure password is 8+ character';
+              },
+              decoration: InputDecoration(
+                labelText: 'Password',
+                hintText: 'Enter your Password',
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                suffixIcon: Icon(Icons.lock),
+              ),
+            ),
+          ),
+          SizedBox(height: size.height * 0.05),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: TextFormField(
+              obscureText: true,
+              onSaved: (newVal) => confirmPassword = newVal,
+              onChanged: (val) {},
+              validator: (val) {
+                return password == confirmPassword
+                    ? null
+                    : ' Password mismatch';
+              },
+              decoration: InputDecoration(
+                labelText: 'Confirm Password',
+                hintText: 'Re-enter your Password',
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                suffixIcon: Icon(Icons.lock),
+              ),
+            ),
+          ),
+          SizedBox(height: size.height * 0.05),
+          RoundedButton(
+            color: indigo,
+            textColor: white,
+            text: 'CONTINUE',
+            press: () {},
+          ),
+        ],
       ),
     );
   }

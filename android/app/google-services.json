@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "367618013033",
+    "firebase_url": "https://lacus-123.firebaseio.com",
+    "project_id": "lacus-123",
+    "storage_bucket": "lacus-123.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367618013033:android:bab83310a443427a872ff8",
+        "android_client_info": {
+          "package_name": "com.example.lacus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367618013033-60dl962n9v67jphi858gug71du6b5hru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_o2oUCx6MKRN2R88eF0CytAfJR68_L4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367618013033-60dl962n9v67jphi858gug71du6b5hru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
