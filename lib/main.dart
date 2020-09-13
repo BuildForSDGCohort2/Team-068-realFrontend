@@ -7,6 +7,7 @@ import 'package:lacus/ui/views/signup/signup_successful.dart';
 import 'package:lacus/ui/views/splashscreen/background.dart';
 import 'package:lacus/ui/views/splashscreen/welcome.dart';
 import 'package:lacus/ui/views/trip_details/trip_details.dart';
+import 'package:lacus/widget/wrapper/wrapper.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Color(0XFF6F35A5),
+        primaryColor: Colors.indigo,
         scaffoldBackgroundColor: Colors.white,
       ),
       home: Welcome(),

@@ -20,7 +20,7 @@ class _VerifyState extends State<Verify> {
     if (showSignIn) {
       return LoginView(toggleView);
     } else {
-      return Description(toggleView);
+      return Description();
     }
   }
 }

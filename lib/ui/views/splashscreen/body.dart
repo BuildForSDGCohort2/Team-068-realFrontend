@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lacus/module/toggle/toggle.dart';
+import 'package:lacus/ui/views/signup/signup.dart';
 import 'package:lacus/ui/views/splashscreen/background.dart';
 import 'package:lacus/widget/button/roundedButton.dart';
 import 'package:lacus/widget/colors/color.dart';
@@ -40,7 +41,14 @@ class Body extends StatelessWidget {
               textColor: Colors.black,
               color: lightIndigo,
               text: 'SIGNUP',
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Description(),
+                  ),
+                );
+              },
             ),
           ],
         ),

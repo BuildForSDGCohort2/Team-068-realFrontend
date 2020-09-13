@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lacus/services/auth/authenticate.dart';
+import 'package:lacus/ui/views/prices/prices.dart';
+import 'package:lacus/widget/colors/color.dart';
 
 class TripDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final AuthService _auth = AuthService();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -11,11 +15,35 @@ class TripDetails extends StatelessWidget {
         centerTitle: true,
       ),
       drawer: Drawer(
-        child: Column(
-          children: [
-             //TODO: implement drawer 
-          ]
-        ),
+        child: Column(children: [
+          Container(
+              width: double.infinity,
+              height: 300,
+              color: indigo,
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                    left: 50,
+                    top: 50,
+                    child: CircleAvatar(
+                      minRadius: 30,
+                      maxRadius: 30,
+                      child: Icon(Icons.person),
+                    ),
+                  ),
+                ],
+              )),
+          Column(
+            children: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  _auth.signOut();
+                },
+                child: Container(child: Text('LOGOUT')),
+              ),
+            ],
+          )
+        ]),
       ),
       body: Center(
         child: Column(children: [
@@ -81,7 +109,12 @@ class TripDetails extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {
-            //TODO: handle navigation
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Prices(),
+              ),
+            );
           },
           child: Text(
             'Get Price Range',
