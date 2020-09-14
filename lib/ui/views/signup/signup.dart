@@ -88,7 +88,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 },
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  hintText: 'Enter your Email',
+                  hintText: 'Enter your Email.',
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   suffixIcon: Icon(Icons.mail),
                 ),

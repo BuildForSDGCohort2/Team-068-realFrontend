@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lacus/services/auth/authenticate.dart';
 import 'package:lacus/ui/views/prices/prices.dart';
+import 'package:lacus/ui/views/splashscreen/welcome.dart';
 import 'package:lacus/widget/colors/color.dart';
 
 class TripDetails extends StatelessWidget {
@@ -38,6 +39,12 @@ class TripDetails extends StatelessWidget {
               FlatButton(
                 onPressed: () {
                   _auth.signOut();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Welcome(),
+                    ),
+                  );
                 },
                 child: Container(child: Text('LOGOUT')),
               ),
