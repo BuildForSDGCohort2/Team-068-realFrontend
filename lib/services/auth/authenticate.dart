@@ -1,53 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lacus/module/user/user.dart';
 
-class AuthService {
-  // create a user obj based on FirebaseUser
-  User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid) : null;
-  }
-
-  //auth change user stream config
-  Stream<User> get user {
-    return _auth.onAuthStateChanged
-        //.map((FirebaseUser user) => _userFromFirebaseUser(user));
-        .map(_userFromFirebaseUser);
-  }
-
+class Authenticate {
+  //true or false ststaement
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  // sign in anon
-  Future signInAnon() async {
-    try {
-      AuthResult result = await _auth.signInAnonymously();
-      FirebaseUser user = result.user;
-
-      return _userFromFirebaseUser(user);
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
+  User _userfromFirebaseUser(FirebaseUser user) {
+    return user != null ? User(userId: user.uid) : null;
   }
 
-  // sign in with email and pass
-  Future signInWithEmail(String email, String password) async {
+  Future signInWithEmailAndPassword(String email, String password) async {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser user = result.user;
-
-      return _userFromFirebaseUser(user);
+      FirebaseUser firebaseUser = result.user;
+      return _userfromFirebaseUser(firebaseUser);
     } catch (e) {
       print(e.toString());
-      return null;
     }
   }
 
-  // register with email
+  Future signUpWithEmailAndPassword(String email, String password) async {
+    try {
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser firebaseUser = result.user;
+      return _userfromFirebaseUser(firebaseUser);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
-  //sign out
-
-  // reset password
   Future resetPassword(String email) async {
     try {
       return await _auth.sendPasswordResetEmail(email: email);
@@ -56,10 +38,9 @@ class AuthService {
     }
   }
 
-  // sign out
   Future signOut() async {
     try {
-      return _auth.signOut();
+      return await _auth.signOut();
     } catch (e) {
       print(e.toString());
     }

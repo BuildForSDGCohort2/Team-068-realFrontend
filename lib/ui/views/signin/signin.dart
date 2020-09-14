@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lacus/services/auth/authenticate.dart';
+import 'package:lacus/services/database/database.dart';
 import 'package:lacus/ui/views/trip_details/trip_details.dart';
 import 'package:lacus/widget/button/roundedButton.dart';
 import 'package:lacus/widget/colors/color.dart';
@@ -14,7 +15,8 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final AuthService _auth = AuthService();
+ final Authenticate _authenticate =  Authenticate();
+ DataBaseMethod dataBaseMethod = DataBaseMethod();
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
@@ -132,7 +134,7 @@ class _LoginViewState extends State<LoginView> {
                                 isLoading = true;
                               });
                               dynamic result =
-                                  await _auth.signInWithEmail(email, password);
+                                  await _authenticate.signInWithEmailAndPassword(email, password);
 
                               if (result == null) {
                                 setState(() {

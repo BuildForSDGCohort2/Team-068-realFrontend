@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:lacus/widget/colors/color.dart';
 
 class Loading extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class Loading extends StatelessWidget {
       color: Colors.white,
       child: Center(
         child: SpinKitWave(
-          color: Colors.grey[600],
+          color: indigo,
           size: 50.0,
         ),
       ),

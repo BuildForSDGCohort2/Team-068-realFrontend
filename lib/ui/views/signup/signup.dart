@@ -61,30 +61,34 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
+  final _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
   String confirmPassword = '';
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Form(
-      child: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: 15, vertical: size.height * 0.01),
+    return Padding(
+      padding:
+          EdgeInsets.symmetric(horizontal: 15, vertical: size.height * 0.01),
+      child: Form(
         child: Column(
           children: <Widget>[
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextFormField(
                 keyboardType: TextInputType.emailAddress,
-                onSaved: (newVal) => email = newVal,
-                onChanged: (val) {},
                 validator: (val) {
                   return RegExp(
                               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                           .hasMatch(val)
                       ? null
                       : 'Please provide a valid email';
+                },
+                onChanged: (val) {
+                  setState(() {
+                    email = val;
+                  });
                 },
                 decoration: InputDecoration(
                   labelText: 'Email',
@@ -99,12 +103,15 @@ class _RegisterFormState extends State<RegisterForm> {
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextFormField(
                 obscureText: true,
-                onSaved: (newVal) => password = newVal,
-                onChanged: (val) {},
                 validator: (val) {
                   return val.length > 8
                       ? null
                       : ' Kindly ensure password is 8+ character';
+                },
+                onChanged: (val) {
+                  setState(() {
+                    password = val;
+                  });
                 },
                 decoration: InputDecoration(
                   labelText: 'Password',
@@ -119,12 +126,15 @@ class _RegisterFormState extends State<RegisterForm> {
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextFormField(
                 obscureText: true,
-                onSaved: (newVal) => confirmPassword = newVal,
-                onChanged: (val) {},
                 validator: (val) {
                   return password == confirmPassword
                       ? null
                       : ' Password mismatch';
+                },
+                onChanged: (val) {
+                  setState(() {
+                    confirmPassword = val;
+                  });
                 },
                 decoration: InputDecoration(
                   labelText: 'Confirm Password',
@@ -139,7 +149,16 @@ class _RegisterFormState extends State<RegisterForm> {
               color: indigo,
               textColor: white,
               text: 'CONTINUE',
-              press: () {},
+              press: () {
+                if (_formKey.currentState.validate()) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Profile(),
+                    ),
+                  );
+                }
+              },
             ),
           ],
         ),
@@ -151,20 +170,49 @@ class _RegisterFormState extends State<RegisterForm> {
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Column(
-        children: <Widget>[
-          Text(
-            'REGISTER ACCOUNT',
-            style: TextStyle(fontWeight: FontWeight.w800),
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: indigo,
+        centerTitle: true,
+        title: Text('SIGNUP'),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: SizedBox(
+            width: double.infinity,
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: size.height * 0.04,
+                ),
+                Text(
+                  'Complete Profile',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w800,
+                    color: indigo,
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * 0.01,
+                ),
+                Text(
+                  'Complete your profile or continue \nwith social media',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * 0.04,
+                ),
+                ProfileForm(),
+              ],
+            ),
           ),
-          Text(
-            'Complete your details or continue \nwith social media',
-            textAlign: TextAlign.center,
-          ),
-          RegisterForm(),
-        ],
+        ),
       ),
     );
   }
@@ -176,9 +224,10 @@ class ProfileForm extends StatefulWidget {
 }
 
 class _ProfileFormState extends State<ProfileForm> {
-  String email = '';
-  String password = '';
-  String confirmPassword = '';
+  final _formKey = GlobalKey<FormState>();
+  String firstName = '';
+  String lastName = '';
+  String phoneNumber = '';
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -189,16 +238,16 @@ class _ProfileFormState extends State<ProfileForm> {
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: TextFormField(
               keyboardType: TextInputType.text,
-              onSaved: (newVal) => email = newVal,
+              onSaved: (newVal) => firstName = newVal,
               onChanged: (val) {},
               validator: (val) {
-                return val.length > 1 ? null : 'Please provide a valid email';
+                return val.length > 1 ? null : 'Please enter a valid name';
               },
               decoration: InputDecoration(
                 labelText: 'First Name',
                 hintText: 'Enter your first name',
                 floatingLabelBehavior: FloatingLabelBehavior.always,
-                suffixIcon: Icon(Icons.mail),
+                suffixIcon: Icon(Icons.person_outline),
               ),
             ),
           ),
@@ -206,19 +255,19 @@ class _ProfileFormState extends State<ProfileForm> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: TextFormField(
-              obscureText: true,
-              onSaved: (newVal) => password = newVal,
+              keyboardType: TextInputType.text,
+              onSaved: (newVal) => lastName = newVal,
               onChanged: (val) {},
               validator: (val) {
                 return val.length > 1
                     ? null
-                    : ' Kindly ensure password is 8+ character';
+                    : ' Kindly ensure a name is written';
               },
               decoration: InputDecoration(
-                labelText: 'Password',
-                hintText: 'Enter your Password',
+                labelText: 'Last Name',
+                hintText: 'Enter your last name',
                 floatingLabelBehavior: FloatingLabelBehavior.always,
-                suffixIcon: Icon(Icons.lock),
+                suffixIcon: Icon(Icons.person_outline),
               ),
             ),
           ),
@@ -226,17 +275,15 @@ class _ProfileFormState extends State<ProfileForm> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: TextFormField(
-              obscureText: true,
-              onSaved: (newVal) => confirmPassword = newVal,
+              keyboardType: TextInputType.phone,
+              onSaved: (newVal) => phoneNumber = newVal,
               onChanged: (val) {},
               validator: (val) {
-                return password == confirmPassword
-                    ? null
-                    : ' Password mismatch';
+                return val.length > 10 ? null : ' Kindly enter a valid number';
               },
               decoration: InputDecoration(
-                labelText: 'Confirm Password',
-                hintText: 'Re-enter your Password',
+                labelText: 'Phone Number',
+                hintText: 'enter your phone number',
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 suffixIcon: Icon(Icons.lock),
               ),

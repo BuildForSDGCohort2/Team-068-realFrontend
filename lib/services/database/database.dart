@@ -1,54 +1,52 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:lacus/module/data/data.dart';
-import 'package:lacus/module/user/user.dart';
 
-class DatabaseServices {
-  final String uid;
-  DatabaseServices({this.uid});
-
-  // Collection reference
-  final CollectionReference dataCollection =
-      Firestore.instance.collection('data');
-  Future updateUserData(
-    String name,
-    String sugars,
-    int strength,
-  ) async {
-    return await dataCollection.document(uid).setData({
-      'name': name,
-      'sugars': sugars,
-      'strength': strength,
-    });
+class DataBaseMethod {
+  getUserByUsername(String Username) async {
+    return await Firestore.instance
+        .collection('Users')
+        .where('name', isEqualTo: Username)
+        .getDocuments();
   }
 
-  // data list from snapshot
-  List<Data> _dataListFromSnapshot(QuerySnapshot snapshot) {
-    return snapshot.documents.map((doc) {
-      return Data(
-        name: doc.data['name'] ?? '',
-        sugars: doc.data['sugars'] ?? '',
-        strength: doc.data['strength'] ?? 0,
-      );
-    }).toList();
+  getUserByUserEmail(String UserEmail) async {
+    return await Firestore.instance
+        .collection('Users')
+        .where('email', isEqualTo: UserEmail)
+        .getDocuments();
   }
 
-  // UserData from snapshot
-  UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
-    return UserData(
-      uid: uid,
-      name: snapshot.data['name'],
-      sugars: snapshot.data['sugars'],
-      strength: snapshot.data['strength'],
-    );
+  uploadUserInfo(userMap) {
+    Firestore.instance.collection('Users').add(userMap);
   }
 
-  // get data stream from database
-  Stream<List<Data>> get data {
-    return dataCollection.snapshots().map(_dataListFromSnapshot);
+  createChatRoom(String chatRoomId, chatRoomMap) {
+    Firestore.instance
+        .collection('ChatRoom')
+        .document(chatRoomId)
+        .setData(chatRoomMap);
   }
 
-  // get user doc stream
-  Stream<UserData> get userData {
-    return dataCollection.document(uid).snapshots().map(_userDataFromSnapshot);
+  addConversationMessages(String chatRoomId, messageMap) {
+    Firestore.instance
+        .collection('ChatRoom')
+        .document(chatRoomId)
+        .collection('chats')
+        .add(messageMap);
+  }
+
+  getConversationMessages(String chatRoomId) async {
+    return await Firestore.instance
+        .collection('ChatRoom')
+        .document(chatRoomId)
+        .collection('chats')
+        .orderBy('time')
+        .snapshots();
+  }
+
+  getChatRoom(String userName) async {
+    return await Firestore.instance
+        .collection('ChatRoom')
+        .where('users', arrayContains: userName)
+        .snapshots();
   }
 }

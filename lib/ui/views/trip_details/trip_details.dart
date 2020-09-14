@@ -7,7 +7,7 @@ import 'package:lacus/widget/colors/color.dart';
 class TripDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final AuthService _auth = AuthService();
+    final Authenticate _authenticate =  Authenticate();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -38,7 +38,7 @@ class TripDetails extends StatelessWidget {
             children: <Widget>[
               FlatButton(
                 onPressed: () {
-                  _auth.signOut();
+                  _authenticate.signOut();
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
