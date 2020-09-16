@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lacus/services/auth/authenticate.dart';
-import 'package:lacus/services/database/database.dart';
-import 'package:lacus/ui/views/signup/signup_success/signup_successful.dart';
 import 'package:lacus/ui/views/signup/signupwidget/registration_form.dart';
-import 'package:lacus/widget/button/roundedButton.dart';
 import 'package:lacus/widget/colors/color.dart';
 
 class Description extends StatelessWidget {

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lacus/services/auth/authenticate.dart';
-import 'package:lacus/shared/details/email.dart';
-import 'package:lacus/shared/details/password.dart';
-import 'package:lacus/ui/views/signup/signup_success/signup_successful.dart';
+import 'package:lacus/backend/services/auth/authenticate.dart';
 import 'package:lacus/widget/button/roundedButton.dart';
 import 'package:lacus/widget/colors/color.dart';
 
@@ -18,8 +15,6 @@ class _ProfileFormState extends State<ProfileForm> {
   String firstName = '';
   String lastName = '';
   String phoneNumber = '';
-  Email _email = Email();
-  Password _password = Password();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -88,26 +83,7 @@ class _ProfileFormState extends State<ProfileForm> {
             color: indigo,
             textColor: white,
             text: 'CONTINUE',
-            press: () async {
-              if (_formKey.currentState.validate()) {
-                print('${_email.email},${_password.password}');
-                dynamic result = await _authenticate.signUpWithEmailAndPassword(
-                    _email.email, _password.password);
-                if (result == null) {
-                  setState(() {
-                    error = 'Email already have an account linked';
-                  });
-                } else {
-                  setState(() {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SuccessfulRegistration()),
-                    );
-                  });
-                }
-              }
-            },
+            press: () async {},
           ),
         ],
       ),

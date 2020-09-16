@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lacus/services/auth/authenticate.dart';
-import 'package:lacus/services/database/database.dart';
+import 'package:lacus/backend/services/auth/authenticate.dart';
+import 'package:lacus/backend/services/database/database.dart';
 import 'package:lacus/ui/views/trip_details/trip_details.dart';
 import 'package:lacus/widget/button/roundedButton.dart';
 import 'package:lacus/widget/colors/color.dart';
