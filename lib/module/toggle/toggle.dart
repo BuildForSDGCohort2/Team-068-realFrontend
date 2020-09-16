@@ -18,7 +18,7 @@ class _VerifyState extends State<Verify> {
   @override
   Widget build(BuildContext context) {
     if (showSignIn) {
-      return LoginView(toggleView);
+      return LoginView();
     } else {
       return Description();
     }

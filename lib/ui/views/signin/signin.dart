@@ -8,15 +8,13 @@ import 'package:lacus/widget/colors/color.dart';
 import 'package:lacus/widget/isloading/isloading.dart';
 
 class LoginView extends StatefulWidget {
-  final Function toggle;
-  LoginView(this.toggle);
   @override
   _LoginViewState createState() => _LoginViewState();
 }
 
 class _LoginViewState extends State<LoginView> {
- final Authenticate _authenticate =  Authenticate();
- DataBaseMethod dataBaseMethod = DataBaseMethod();
+  final Authenticate _authenticate = Authenticate();
+  DataBaseMethod dataBaseMethod = DataBaseMethod();
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
@@ -133,8 +131,8 @@ class _LoginViewState extends State<LoginView> {
                               setState(() {
                                 isLoading = true;
                               });
-                              dynamic result =
-                                  await _authenticate.signInWithEmailAndPassword(email, password);
+                              dynamic result = await _authenticate
+                                  .signInWithEmailAndPassword(email, password);
 
                               if (result == null) {
                                 setState(() {
@@ -212,9 +210,7 @@ class _LoginViewState extends State<LoginView> {
                               width: 5.0,
                             ),
                             GestureDetector(
-                              onTap: () {
-                                widget.toggle();
-                              },
+                              onTap: () {},
                               child: Container(
                                 padding: EdgeInsets.symmetric(vertical: 9.0),
                                 child: Text(

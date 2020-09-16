@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lacus/services/auth/authenticate.dart';
+import 'package:lacus/services/database/database.dart';
+import 'package:lacus/ui/views/signin/signin.dart';
+import 'package:lacus/ui/views/signup/signup_successful.dart';
 import 'package:lacus/widget/button/roundedButton.dart';
 import 'package:lacus/widget/colors/color.dart';
 
@@ -61,6 +65,8 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
+  final Authenticate _authenticate = Authenticate();
+  DataBaseMethod dataBaseMethod = DataBaseMethod();
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
@@ -149,15 +155,19 @@ class _RegisterFormState extends State<RegisterForm> {
               color: indigo,
               textColor: white,
               text: 'CONTINUE',
-              press: () {
-                if (_formKey.currentState.validate()) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Profile(),
-                    ),
-                  );
+              press: () async {
+                dynamic result = await _authenticate.signUpWithEmailAndPassword(
+                    email, password);
+                if (result == null) {
+                  setState(() => 'Account linked to the Email kindly login');
                 }
+
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Profile(),
+                  ),
+                );
               },
             ),
           ],
@@ -294,7 +304,14 @@ class _ProfileFormState extends State<ProfileForm> {
             color: indigo,
             textColor: white,
             text: 'CONTINUE',
-            press: () {},
+            press: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SuccessfulRegistration(),
+                ),
+              );
+            },
           ),
         ],
       ),

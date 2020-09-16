@@ -7,7 +7,7 @@ import 'package:lacus/widget/colors/color.dart';
 class TripDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Authenticate _authenticate =  Authenticate();
+    final Authenticate _authenticate = Authenticate();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

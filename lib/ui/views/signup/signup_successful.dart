@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lacus/ui/views/signin/signin.dart';
 
 class SuccessfulRegistration extends StatelessWidget {
   @override
@@ -44,7 +45,12 @@ class SuccessfulRegistration extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
                     onPressed: () {
-                      //TODO: handle navigation
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginView(),
+                        ),
+                      );
                     },
                     child: Text(
                       'Go to Login',
