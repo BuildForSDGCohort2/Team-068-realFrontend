@@ -21,7 +21,7 @@ class Description extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: SizedBox(
-            height: size.height,
+            height: size.height * 1.3,
             width: double.infinity,
             child: Column(
               children: <Widget>[
@@ -58,9 +58,3 @@ class Description extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
