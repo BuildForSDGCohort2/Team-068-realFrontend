@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lacus/backend/services/auth/authenticate.dart';
 import 'package:lacus/backend/services/database/database.dart';
+import 'package:lacus/backend/services/helper_function/helper_function.dart';
 
 import 'package:lacus/ui/views/signup/signup_success/signup_successful.dart';
 import 'package:lacus/widget/button/roundedButton.dart';
@@ -166,8 +167,6 @@ class _RegisterFormState extends State<RegisterForm> {
                       setState(() {
                         isLoading = true;
                       });
-                      print(
-                          '${emailTextEditingController.text},${passwordTextEditingController.text}');
                       dynamic result =
                           await _authenticate.signUpWithEmailAndPassword(
                               emailTextEditingController.text,
@@ -180,13 +179,27 @@ class _RegisterFormState extends State<RegisterForm> {
                           error = 'Email already have an account linked';
                         });
                       } else {
-                        setState(() {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SuccessfulRegistration()),
-                          );
-                        });
+                        Map<String, String> userInfoMap = {
+                          'firstName': firstNameTextEditingController.text,
+                          'email': emailTextEditingController.text,
+                          'lastName': lastNameTextEditingController.text,
+                          'phoneNumber': phoneTextEditingController.text,
+                        };
+                        HelperFunction.saveUserFirstNameSharedPreference(
+                            firstNameTextEditingController.text);
+                        HelperFunction.saveUserLastNameSharedPreference(
+                            lastNameTextEditingController.text);
+                        HelperFunction.saveUserPhoneNumberSharedPreference(
+                            phoneTextEditingController.text);
+                        HelperFunction.saveUserEmailSharedPreference(
+                            emailTextEditingController.text);
+                        dataBaseMethod.uploadUserInfo(userInfoMap);
+                        HelperFunction.saveUserLoggedInSharedPreference(true);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SuccessfulRegistration()),
+                        );
                       }
                     }
                   },

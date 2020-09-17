@@ -1,9 +1,38 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:lacus/backend/services/auth/authenticate.dart';
+import 'package:lacus/backend/services/database/database.dart';
+import 'package:lacus/backend/services/helper_function/helper_function.dart';
+import 'package:lacus/module/constant_value/Name_const.dart';
+import 'package:lacus/module/constant_value/last_name.dart';
 import 'package:lacus/ui/views/prices/prices.dart';
+import 'package:lacus/widget/colors/color.dart';
 import 'package:lacus/widget/drawer/drawer.dart';
 
-class TripDetails extends StatelessWidget {
+class TripDetails extends StatefulWidget {
+  @override
+  _TripDetailsState createState() => _TripDetailsState();
+}
+
+class _TripDetailsState extends State<TripDetails> {
+  DataBaseMethod dataBaseMethod = new DataBaseMethod();
+  @override
+  void initState() {
+    getUserInfo();
+    super.initState();
+  }
+
+  getUserInfo() async {
+    Constants.fistName =
+        await HelperFunction.getUserFirstNameSharedPreference();
+    ConstantsLn.lastName =
+        await HelperFunction.getUserLastNameSharedPreference();
+    Constants3.email = await HelperFunction.getUserEmailSharedPreference();
+    Constants2.phoneNumber =
+        await HelperFunction.getUserPhoneNumberSharedPreference();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Authenticate _authenticate = Authenticate();
@@ -18,6 +47,16 @@ class TripDetails extends StatelessWidget {
         drawer: drawerLink(context),
         body: Center(
           child: Column(children: [
+            SizedBox(height: 40),
+            Text(
+              'Hi ${Constants.fistName}, kindly book a ride.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 20,
+                color: indigo,
+              ),
+            ),
             SizedBox(height: 40),
             SizedBox(
               width: 300,

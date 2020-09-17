@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lacus/backend/services/auth/authenticate.dart';
+import 'package:lacus/backend/services/database/database.dart';
+import 'package:lacus/module/constant_value/Name_const.dart';
+import 'package:lacus/module/constant_value/last_name.dart';
 import 'package:lacus/ui/views/splashscreen/welcome.dart';
 import 'package:lacus/widget/colors/color.dart';
 
 Widget drawerLink(BuildContext context) {
+  DataBaseMethod dataBaseMethod = new DataBaseMethod();
   final Authenticate _authenticate = Authenticate();
   return Drawer(
     child: Column(children: [
@@ -26,7 +30,7 @@ Widget drawerLink(BuildContext context) {
                 ),
               ),
               Text(
-                "Eniola Olatubosun",
+                "${Constants.fistName} ${ConstantsLn.lastName}",
                 style: TextStyle(
                   fontSize: 18.0,
                   color: Colors.white,
@@ -49,7 +53,7 @@ Widget drawerLink(BuildContext context) {
                     color: indigo,
                   ),
                   title: Text(
-                    '+234 8095 888 215',
+                    '${Constants2.phoneNumber}',
                     style: TextStyle(
                       color: Colors.teal[900],
                       fontSize: 15.0,
@@ -66,7 +70,7 @@ Widget drawerLink(BuildContext context) {
                     color: indigo,
                   ),
                   title: Text(
-                    'olatubosuneniola@yahoo.com',
+                    '${Constants3.email}',
                     style: TextStyle(
                       color: Colors.teal[900],
                       fontSize: 12.0,
@@ -89,9 +93,9 @@ Widget drawerLink(BuildContext context) {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Icon(Icons.settings),
+                    Icon(Icons.home),
                     Text(
-                      'Settings',
+                      'Home',
                     ),
                   ],
                 ),
@@ -107,9 +111,9 @@ Widget drawerLink(BuildContext context) {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Icon(Icons.settings),
+                    Icon(Icons.details),
                     Text(
-                      'Security',
+                      'Delivery details',
                     ),
                   ],
                 ),
@@ -125,27 +129,9 @@ Widget drawerLink(BuildContext context) {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Icon(Icons.settings),
+                    Icon(Icons.help),
                     Text(
                       'Help',
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Container(
-              height: 60,
-              width: 300,
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Icon(Icons.settings),
-                    Text(
-                      'Sign Out',
                     ),
                   ],
                 ),

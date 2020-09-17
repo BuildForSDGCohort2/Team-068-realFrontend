@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lacus/backend/services/helper_function/helper_function.dart';
+import 'package:lacus/module/constant_value/last_name.dart';
 
 enum IsSelected { picked, notPicked }
 
@@ -8,6 +10,17 @@ class Prices extends StatefulWidget {
 }
 
 class _PricesState extends State<Prices> {
+  @override
+  void initState() {
+    getUserLast();
+    super.initState();
+  }
+
+  getUserLast() async {
+    ConstantsLn.lastName =
+        await HelperFunction.getUserFirstNameSharedPreference();
+  }
+
   IsSelected _selected = IsSelected.notPicked;
   @override
   Widget build(BuildContext context) {
@@ -136,7 +149,7 @@ class _PricesState extends State<Prices> {
           SizedBox(height: 100)
         ],
       )),
-       floatingActionButton: SizedBox(
+      floatingActionButton: SizedBox(
         width: 300,
         height: 50,
         child: RaisedButton(

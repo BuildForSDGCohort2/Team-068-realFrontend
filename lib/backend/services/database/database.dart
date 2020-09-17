@@ -1,10 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DataBaseMethod {
-  getUserByUsername(String Username) async {
+  getUserByFirstName(String firstName) async {
     return await Firestore.instance
         .collection('Users')
-        .where('name', isEqualTo: Username)
+        .where('firstName', isEqualTo: firstName)
+        .getDocuments();
+  }
+
+  getUserByLastName(String lastName) async {
+    return await Firestore.instance
+        .collection('Users')
+        .where('lastName', isEqualTo: lastName)
+        .getDocuments();
+  }
+
+  getUserByPhoneNumber(String phoneNumber) async {
+    return await Firestore.instance
+        .collection('Users')
+        .where('phoneNumber', isEqualTo: phoneNumber)
         .getDocuments();
   }
 
