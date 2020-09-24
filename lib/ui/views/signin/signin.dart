@@ -122,6 +122,12 @@ class _LoginViewState extends State<LoginView> {
                               child: Text('Forgot your password?',
                                   style: TextStyle(color: Colors.black))),
                         ),
+                        SizedBox(
+                          height: size.height * 0.02,
+                        ),
+                        Text(error,
+                            style:
+                                TextStyle(color: Colors.red, fontSize: 14.0)),
                         RoundedButton(
                           color: indigo,
                           textColor: white,
@@ -223,12 +229,6 @@ class _LoginViewState extends State<LoginView> {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: size.height * 0.04,
-                        ),
-                        Text(error,
-                            style:
-                                TextStyle(color: Colors.red, fontSize: 14.0)),
                       ],
                     ),
                   ),

@@ -4,6 +4,7 @@ import 'package:lacus/backend/services/database/database.dart';
 import 'package:lacus/module/constant_value/Name_const.dart';
 import 'package:lacus/module/constant_value/last_name.dart';
 import 'package:lacus/ui/views/splashscreen/welcome.dart';
+import 'package:lacus/ui/views/trip_details/trip_details.dart';
 import 'package:lacus/widget/colors/color.dart';
 
 Widget drawerLink(BuildContext context) {
@@ -112,8 +113,18 @@ Widget drawerLink(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Icon(Icons.details),
-                    Text(
-                      'Delivery details',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TripDetails(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Trip Details',
+                      ),
                     ),
                   ],
                 ),

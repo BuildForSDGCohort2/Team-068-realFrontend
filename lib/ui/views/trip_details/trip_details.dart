@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:lacus/backend/services/auth/authenticate.dart';
 import 'package:lacus/backend/services/database/database.dart';
 import 'package:lacus/backend/services/helper_function/helper_function.dart';
 import 'package:lacus/module/constant_value/Name_const.dart';
@@ -17,6 +16,7 @@ class TripDetails extends StatefulWidget {
 
 class _TripDetailsState extends State<TripDetails> {
   DataBaseMethod dataBaseMethod = new DataBaseMethod();
+
   @override
   void initState() {
     getUserInfo();
@@ -35,7 +35,6 @@ class _TripDetailsState extends State<TripDetails> {
 
   @override
   Widget build(BuildContext context) {
-    final Authenticate _authenticate = Authenticate();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -121,6 +120,7 @@ class _TripDetailsState extends State<TripDetails> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             onPressed: () {
+              print('${Constants.fistName}');
               Navigator.push(
                 context,
                 MaterialPageRoute(
