@@ -8,6 +8,7 @@ class Authenticate {
     return user != null ? User(userId: user.uid) : null;
   }
 
+  Stream<FirebaseUser> get currentUser => _auth.onAuthStateChanged;
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
@@ -25,6 +26,14 @@ class Authenticate {
           email: email, password: password);
       FirebaseUser firebaseUser = result.user;
       return _userfromFirebaseUser(firebaseUser);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<AuthResult> signInWithCredential(AuthCredential credential) async {
+    try {
+      await _auth.signInWithCredential(credential);
     } catch (e) {
       print(e.toString());
     }

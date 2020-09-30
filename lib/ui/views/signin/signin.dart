@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lacus/backend/services/auth/authenticate.dart';
 import 'package:lacus/backend/services/database/database.dart';
+import 'package:lacus/backend/services/fb/auth_blocs.dart';
 import 'package:lacus/ui/views/trip_details/trip_details.dart';
 import 'package:lacus/widget/button/roundedButton.dart';
 import 'package:lacus/widget/colors/color.dart';
 import 'package:lacus/widget/isloading/isloading.dart';
+import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -22,6 +24,7 @@ class _LoginViewState extends State<LoginView> {
   String error = '';
   @override
   Widget build(BuildContext context) {
+    var authBloc = Provider.of<AuthBloc>(context);
     Size size = MediaQuery.of(context).size;
     return isLoading
         ? Loading()
@@ -186,18 +189,23 @@ class _LoginViewState extends State<LoginView> {
                           ),
                         ),
                         SizedBox(height: 10),
-                        ClipOval(
-                          child: Container(
-                            height: 60,
-                            width: 60,
-                            color: Colors.white,
-                            child: Center(
-                              child: Text(
-                                'f',
-                                style: TextStyle(
-                                  fontSize: 35,
-                                  fontWeight: FontWeight.w900,
-                                  color: Color(0xFF2A4D73),
+                        GestureDetector(
+                          onTap: () {
+                            authBloc.loginFacebook();
+                          },
+                          child: ClipOval(
+                            child: Container(
+                              height: 60,
+                              width: 60,
+                              color: Colors.white,
+                              child: Center(
+                                child: Text(
+                                  'f',
+                                  style: TextStyle(
+                                    fontSize: 35,
+                                    fontWeight: FontWeight.w900,
+                                    color: Color(0xFF2A4D73),
+                                  ),
                                 ),
                               ),
                             ),
