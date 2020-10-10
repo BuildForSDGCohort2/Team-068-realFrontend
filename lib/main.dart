@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lacus/backend/services/fb/auth_blocs.dart';
-import 'package:lacus/backend/services/fb/fb.dart';
+import 'package:lacus/backend/maps/fb.dart';
 import 'package:lacus/ui/views/splashscreen/welcome.dart';
 import 'package:provider/provider.dart';
 
