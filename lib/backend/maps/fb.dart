@@ -6,6 +6,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:math' show cos, sqrt, asin;
 
 import 'package:lacus/backend/maps/secrets.dart';
+import 'package:lacus/ui/views/prices/prices.dart';
+import 'package:lacus/widget/colors/color.dart';
 
 class MapView extends StatefulWidget {
   @override
@@ -116,7 +118,7 @@ class _MapViewState extends State<MapView> {
 
       setState(() {
         _currentAddress =
-            "${place.name}, ${place.locality}, ${place.postalCode}, ${place.country}";
+            "${place.name}, ${place.subLocality}, ${place.locality}, ${place.country}";
         startAddressController.text = _currentAddress;
         _startAddress = _currentAddress;
       });
@@ -278,7 +280,7 @@ class _MapViewState extends State<MapView> {
     PolylineId id = PolylineId('poly');
     Polyline polyline = Polyline(
       polylineId: id,
-      color: Colors.red,
+      color: indigo,
       points: polylineCoordinates,
       width: 3,
     );
@@ -423,7 +425,7 @@ class _MapViewState extends State<MapView> {
                           Visibility(
                             visible: _placeDistance == null ? false : true,
                             child: Text(
-                              'DISTANCE: $_placeDistance km',
+                              'Total Distance: $_placeDistance km',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -463,7 +465,7 @@ class _MapViewState extends State<MapView> {
                                     });
                                   }
                                 : null,
-                            color: Colors.red,
+                            color: indigo,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
@@ -493,9 +495,9 @@ class _MapViewState extends State<MapView> {
                   padding: const EdgeInsets.only(right: 10.0, bottom: 10.0),
                   child: ClipOval(
                     child: Material(
-                      color: Colors.orange[100], // button color
+                      color: lightIndigo, // button color
                       child: InkWell(
-                        splashColor: Colors.orange, // inkwell color
+                        splashColor: lightIndigo, // inkwell color
                         child: SizedBox(
                           width: 56,
                           height: 56,
@@ -514,6 +516,35 @@ class _MapViewState extends State<MapView> {
                             ),
                           );
                         },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SafeArea(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: 200,
+                    height: 50,
+                    child: RaisedButton(
+                      color: Color(0xFF2A4D73),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Prices(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Get Price Range',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),

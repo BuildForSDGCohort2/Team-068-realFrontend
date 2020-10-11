@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:lacus/backend/maps/fb.dart';
 import 'package:lacus/backend/services/database/database.dart';
 import 'package:lacus/backend/services/helper_function/helper_function.dart';
 import 'package:lacus/module/constant_value/Name_const.dart';
@@ -48,7 +49,7 @@ class _TripDetailsState extends State<TripDetails> {
           child: Column(children: [
             SizedBox(height: 40),
             Text(
-              'Hi ${Constants.fistName}, kindly book a ride.',
+              'Hi fistName, kindly book a ride.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.w700,
@@ -67,6 +68,12 @@ class _TripDetailsState extends State<TripDetails> {
                       side: BorderSide(color: Color(0xFF2A4D73))),
                   onPressed: () {
                     //TODO: handle event
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MapView(),
+                      ),
+                    );
                   },
                   child: Row(
                     children: [
@@ -77,39 +84,13 @@ class _TripDetailsState extends State<TripDetails> {
                         size: 32,
                       ),
                       SizedBox(width: 25),
-                      Text('Add Pickup Location',
+                      Text('select Location',
                           style:
                               TextStyle(fontSize: 17, color: Colors.black54)),
                     ],
                   )),
             ),
             SizedBox(height: 20),
-            SizedBox(
-              width: 300,
-              height: 55,
-              child: RaisedButton(
-                  color: Color(0xFFE5E5EA),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      side: BorderSide(color: Color(0xFF2A4D73))),
-                  onPressed: () {
-                    //TODO: handle event
-                  },
-                  child: Row(
-                    children: [
-                      SizedBox(width: 10),
-                      Icon(
-                        Icons.add,
-                        color: Color(0xFF2A4D73),
-                        size: 32,
-                      ),
-                      SizedBox(width: 25),
-                      Text('Add Destination',
-                          style:
-                              TextStyle(fontSize: 17, color: Colors.black54)),
-                    ],
-                  )),
-            ),
           ]),
         ),
         floatingActionButton: SizedBox(
