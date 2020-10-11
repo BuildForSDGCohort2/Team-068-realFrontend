@@ -387,12 +387,12 @@ class _MapViewState extends State<MapView> {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           Text(
-                            'Places',
+                            'Delivery',
                             style: TextStyle(fontSize: 20.0),
                           ),
                           SizedBox(height: 10),
                           _textField(
-                              label: 'Start',
+                              label: 'Pick up',
                               hint: 'Choose starting point',
                               prefixIcon: Icon(Icons.looks_one),
                               suffixIcon: IconButton(
