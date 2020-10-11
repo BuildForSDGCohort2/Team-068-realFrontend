@@ -211,32 +211,6 @@ class _LoginViewState extends State<LoginView> {
                             ),
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              "Don't have an account?",
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5.0,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                padding: EdgeInsets.symmetric(vertical: 9.0),
-                                child: Text(
-                                  "Create now.",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      decoration: TextDecoration.underline),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   ),

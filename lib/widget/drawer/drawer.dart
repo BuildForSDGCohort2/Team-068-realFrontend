@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lacus/backend/services/auth/authenticate.dart';
 import 'package:lacus/backend/services/database/database.dart';
 import 'package:lacus/module/constant_value/Name_const.dart';
-import 'package:lacus/module/constant_value/last_name.dart';
 import 'package:lacus/ui/views/splashscreen/welcome.dart';
 import 'package:lacus/ui/views/trip_details/trip_details.dart';
 import 'package:lacus/widget/colors/color.dart';
@@ -32,7 +31,7 @@ Widget drawerLink(BuildContext context) {
                   ),
                 ),
                 Text(
-                  "${Constants.fistName} ${ConstantsLn.lastName}",
+                  "<name>${Constants.fistName} ",
                   style: TextStyle(
                     fontSize: 18.0,
                     color: Colors.white,
@@ -56,7 +55,7 @@ Widget drawerLink(BuildContext context) {
                       color: indigo,
                     ),
                     title: Text(
-                      '${Constants2.phoneNumber}',
+                      '<Number>${Constants2.phoneNumber}',
                       style: TextStyle(
                         color: Colors.teal[900],
                         fontSize: 15.0,
@@ -74,7 +73,7 @@ Widget drawerLink(BuildContext context) {
                       color: indigo,
                     ),
                     title: Text(
-                      '${Constants3.email}',
+                      '<email>${Constants3.email}',
                       style: TextStyle(
                         color: Colors.teal[900],
                         fontSize: 12.0,
